@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+     public const PUBLISH= 1;
+     public const DRAFT = 0;
+
     use HasFactory;
     protected $fillable = ['image_id','user_id', 'category_id', 'title', 'description', 'status'];
     

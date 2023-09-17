@@ -30,7 +30,7 @@ class SiteController extends Controller
 
     public function index(){
 
-        $blogs = Post::with('tags','User','Category','image','comments')->get();
+        $blogs = Post::with('tags','User','Category','image','comments')->where('status' ,Post::PUBLISH)->paginate(4);;
         
         
         // dd($blogs);

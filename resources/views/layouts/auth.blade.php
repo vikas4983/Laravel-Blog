@@ -1277,7 +1277,7 @@
                                     </li>
 
                                     <li class="dropdown-footer">
-                                        <form id="logout-form" action="{{ route('logout') }}" method="post">
+                                        <form id="logout-form" action="{{ url('logout') }}" method="post">
                                             @csrf
                                             <a id="logout-button" class="dropdown-link-item"
                                                 href="javascript:void(0)"> <i class="mdi mdi-logout"></i> Log Out </a>

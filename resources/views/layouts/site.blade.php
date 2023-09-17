@@ -14,7 +14,7 @@
     <!-- ** Basic Page Needs ** -->
     <meta charset="utf-8">
     <title>@yield('title')</title>
-    
+
 
     <!-- ** Mobile Specific Metas ** -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -84,19 +84,43 @@
                                 <span class="fa fa-bars"></span>
                             </button>
 
-                            <div class="collapse navbar-collapse text-center" id="navbarsExample09">
-                                <ul class="navbar-nav ml-auto">
-                                    <li class="nav-item @@home">
+                            @guest
+                                <div class="collapse navbar-collapse text-center" id="navbarsExample09">
+                                    <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item @@home">
+                                            <a class="nav-link" href="{{ url('/') }}">Home</a>
+                                        </li>
+                                        <li class="nav-item @@contact"><a class="nav-link"
+                                                href="{{ url('userlogin') }}">Login</a></li>
+                                        <li class="nav-item @@contact"><a class="nav-link"
+                                                href="{{ url('register') }}">Register</a></li>
+                                    </ul>
+
+
+                                </div>
+                            @else
+                                <div class="collapse navbar-collapse text-center" id="navbarsExample09">
+                                    <ul class="navbar-nav ml-auto">
+                                        {{-- <li class="nav-item @@home">
                                         <a class="nav-link" href="{{ url('/') }}">Home</a>
+                                    </li> --}}
+
+                                    <li class="nav-item @@home">
+                                        
+                                            
+                                            <button>Home</button>
+                                       
                                     </li>
-                                    <li class="nav-item @@contact"><a class="nav-link"
-                                            href="{{ url('login') }}">Login</a></li>
-                                    <li class="nav-item @@contact"><a class="nav-link"
-                                            href="{{ url('register') }}">Register</a></li>
-                                </ul>
+                                        <li class="nav-item @@home">
+                                            <form action="{{ url('logout') }}" method="POST">
+                                                @csrf
+                                                <button>Logout</button>
+                                            </form>
+                                        </li>
+                                        
+                                </div>
 
-
-                            </div>
+                            @endguest
                         </nav>
                     </div>
                 </div>
@@ -207,7 +231,7 @@ Essential Scripts
 
     <script src="js/script.js"></script>
 
-   
+
 
 </body>
 

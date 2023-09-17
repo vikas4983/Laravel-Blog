@@ -87,18 +87,40 @@
                                 <span class="fa fa-bars"></span>
                             </button>
 
+                            @guest
                             <div class="collapse navbar-collapse text-center" id="navbarsExample09">
                                 <ul class="navbar-nav ml-auto">
                                     <li class="nav-item @@home">
                                         <a class="nav-link" href="{{ url('/') }}">Home</a>
                                     </li>
-                                    <li class="nav-item @@home">
-                                        <a class="nav-link" href="{{ url('login') }}">Login</a>
-                                    </li>
-                                    <li class="nav-item @@home">
-                                        <a class="nav-link" href="{{ url('register') }}">Register</a>
-                                    </li>
+                                    <li class="nav-item @@contact"><a class="nav-link"
+                                            href="{{ url('userlogin') }}">Login</a></li>
+                                    <li class="nav-item @@contact"><a class="nav-link"
+                                            href="{{ url('register') }}">Register</a></li>
+                                </ul>
+
+
                             </div>
+                        @else
+                            <div class="collapse navbar-collapse text-center" id="navbarsExample09">
+                                <ul class="navbar-nav ml-auto">
+                                    {{-- <li class="nav-item @@home">
+                                    <a class="nav-link" href="{{ url('/') }}">Home</a>
+                                </li> --}}
+
+                                <li class="nav-item @@home">
+                                    <button>Home</button>
+                                </li>
+                                    <li class="nav-item @@home">
+                                        <form action="{{ url('sitelogout') }}" method="POST">
+                                            @csrf
+                                            <button>Logout</button>
+                                        </form>
+                                    </li>
+                                    
+                            </div>
+
+                        @endguest
                         </nav>
                     </div>
                 </div>
@@ -321,7 +343,7 @@
                             @foreach($latestpost as $post)
                            
                             <div class="media border-bottom py-3">
-                                <a href="{{ url('singleblog', $post->id) }}"><img loading="lazy" class="mr-4" src="{{ asset('storage/auth/posts/'.$blog->image->image) }}" width="90px"    
+                                <a href="{{ url('singleblog', $post->id) }}"><img loading="lazy" class="mr-4" src="{{ asset('storage/auth/posts/'.$post->image->image) }}" width="90px"    
                                         alt="blog" ></a>
                                 <div class="media-body">
                                     <h6 class="my-2"><a href="{{ url('singleblog', $post->id) }}">{{ $post->title }}</h6></a>
@@ -330,6 +352,10 @@
                             </div>
                             @endforeach
   
+                        </div>
+                        <div class="col-md 12 mt-3">
+                            <span>{{ $comments->links() }}</span>
+
                         </div>
                         @endif
                         @if(count($tags)>0)

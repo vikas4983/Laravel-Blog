@@ -50,11 +50,14 @@ Route::get('singleblog/{id}', [SiteController::class,'singleblog'])->middleware(
 Route::post('postcomment/{id}',[CommentController::class,'postcomment'])->middleware('auth');
 Route::post('commentreply/{id}',[CommentController::class,'commentreply'])->middleware('auth');
 Route::get('deletecommentreply/{id}',[CommentController::class,'deletecommentreply'])->middleware('auth');
+Route::get('edit-user-profile',[SiteController::class,'edituser']);
+Route::post('update-user',[SiteController::class,'updateuser']);
 
 });
-Route::get('userlogin',[SiteLoginController::class,'userlogin']);
 Route::post('user', [SiteLoginController::class,'user']);
-Route::post('logout', [SiteLogoutController::class,'logout']);
+Route::get('userlogin',[SiteLoginController::class,'userlogin']);
+
+Route::post('sitelogout', [SiteLogoutController::class,'sitelogout']);
 
 
 

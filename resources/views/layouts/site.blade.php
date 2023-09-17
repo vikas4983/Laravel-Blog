@@ -106,13 +106,10 @@
                                     </li> --}}
 
                                     <li class="nav-item @@home">
-                                        
-                                            
-                                            <button>Home</button>
-                                       
+                                        <button>Home</button>
                                     </li>
                                         <li class="nav-item @@home">
-                                            <form action="{{ url('logout') }}" method="POST">
+                                            <form action="{{ url('sitelogout') }}" method="POST">
                                                 @csrf
                                                 <button>Logout</button>
                                             </form>

@@ -1252,7 +1252,7 @@
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-right">
                                     <li>
-                                        <a class="dropdown-link-item" href="user-profile.html">
+                                        <a class="dropdown-link-item" href="{{ url('edit-user-profile') }}">
                                             <i class="mdi mdi-account-outline"></i>
                                             <span class="nav-text">My Profile</span>
                                         </a>

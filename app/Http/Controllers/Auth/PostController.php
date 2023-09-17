@@ -114,7 +114,7 @@ class PostController extends Controller
             }
     
         }
-        $request->session()->flash('success',);
+        $request->session()->flash('success');
         $msg = "Post Created Successfully!";
         return redirect('auth/posts')->with('success', $msg);
 
